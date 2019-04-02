@@ -18,7 +18,7 @@ class Monolog extends Base
 {
     /**
      * @param ConfigInterface $config
-     * @return \Zer0\Drivers\PDO\PDO
+     * @return Logger
      */
     public function instantiate(ConfigInterface $config): Logger
     {
@@ -45,24 +45,5 @@ class Monolog extends Base
         }
 
         return $logger;
-    }
-
-    /**
-     * @param mixed $dsn
-     * @return string
-     */
-    protected static function getDSN($dsn): string
-    {
-        if (is_string($dsn)) {
-            return $dsn;
-        }
-        $ret = '';
-        foreach ($dsn as $type => $sub) {
-            $ret .= $type . ':';
-            foreach ($sub as $key => $value) {
-                $ret .= $key . '=' . $value . ';';
-            }
-        }
-        return $ret;
     }
 }
